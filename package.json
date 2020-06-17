@@ -1,0 +1,28 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "backend for dev desk queue build week",
+  "main": "index.js",
+  "scripts": {
+    "test": "maybe later"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Build-Week-DevDeskQueue-1/Back-End.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Build-Week-DevDeskQueue-1/Back-End/issues"
+  },
+  "homepage": "https://github.com/Build-Week-DevDeskQueue-1/Back-End#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "jest": "^26.0.1",
+    "knex": "^0.21.1",
+    "sqlite3": "^4.2.0",
+    "supertest": "^4.0.2"
+  }
+}
