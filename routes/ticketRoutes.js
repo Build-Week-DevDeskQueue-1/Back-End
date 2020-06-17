@@ -32,4 +32,17 @@ router.post('/assign', (req, res) => {
   .catch(error => res.status(401).send("Something went wrong, probably invalid ticket id"))
 })
 
+router.put('/status', (req, res) => {
+  db.resolveOrReopen(req.body.id, req.body.action)
+  .then(response => {
+    if (req.body.action === 'resolve') {
+      res.status(200).send("Ticket status changed to resolved")
+    } else
+    if (req.body.action) {
+      res.status(200).send("Ticket reopened")
+    }
+  }) //fails silently if given an invalid ticket id, no clue why
+  .catch(error => res.status(401).send("Something went wrong, probably invalid ticket id"))
+})
+
 module.exports = router;

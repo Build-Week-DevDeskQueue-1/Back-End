@@ -23,7 +23,7 @@ const tickets = id => {
       'description', 
       'tried', 
       'category', 
-      'is_open', 
+      'status', 
       'student.username as student', 
       'helper.username as helper'
     )
@@ -37,7 +37,7 @@ const tickets = id => {
       'description', 
       'tried', 
       'category', 
-      'is_open', 
+      'status', 
       'student.username as student', 
       'helper.username as helper'
     )
@@ -49,7 +49,16 @@ const createTicket = (ticket, studentId) => {
 }
 
 const assignTicket = (ticketId, helperId) => {
-  return db('tickets').where({ 'tickets.id': ticketId }).update({ helper_id: helperId })
+  return db('tickets').where({ 'tickets.id': ticketId }).update({ status: "closed", helper_id: helperId })
+}
+
+const resolveOrReopen = (ticketId, action) => {
+  if (action === "resolve") {
+    return db('tickets').where({ 'tickets.id': ticketId }).update({ status: "resolved" })
+  } else
+  if (action === "reopen") {
+    return db('tickets').where({ 'tickets.id': ticketId }).update({ status: "open", helper_id: null })
+  }
 }
 
 module.exports = {
@@ -57,5 +66,6 @@ module.exports = {
   user,
   tickets,
   createTicket,
-  assignTicket
+  assignTicket,
+  resolveOrReopen
 }
