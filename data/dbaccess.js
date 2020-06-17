@@ -44,6 +44,10 @@ const tickets = id => {
   }
 }
 
+const createTicket = (ticket, studentId) => {
+  return db('tickets').insert({ ...ticket, student_id: studentId })
+}
+
 const assignTicket = (ticketId, helperId) => {
   return db('tickets').where({ 'tickets.id': ticketId }).update({ helper_id: helperId })
 }
@@ -52,5 +56,6 @@ module.exports = {
   register,
   user,
   tickets,
+  createTicket,
   assignTicket
 }

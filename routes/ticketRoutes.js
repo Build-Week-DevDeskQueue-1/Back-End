@@ -20,6 +20,12 @@ router.get('/', (req, res) => {
   .catch(error => res.status(401).send("Something went wrong, probably invalid ticket id"))
 })
 
+router.post('/', (req, res) => {
+  db.createTicket(req.body, req.session.user.id)
+  .then(response => res.status(200).send("Successfully created ticket"))
+  .catch(error => res.status(401).send("Something went wrong, probably missing required fields (title, description, category, tried"))
+})
+
 router.post('/assign', (req, res) => {
   db.assignTicket(req.body.id, req.session.user.id)
   .then(response => res.status(200).send("Successfully assigned to ticket"))
