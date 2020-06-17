@@ -16,7 +16,7 @@ exports.up = function(knex) {
     table.text('category').notNullable();
     table.integer('student_id').notNullable().references('users.id');
     table.integer('helper_id').references('users.id')
-    table.boolean('is_open').notNullable().defaultTo(true)
+    table.text('status').notNullable().defaultTo("open")
   })
 };
 

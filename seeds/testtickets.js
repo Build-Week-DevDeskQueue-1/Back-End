@@ -12,7 +12,7 @@ exports.seed = function(knex) {
           tried: 'everything',
           category: 'tech support',
           student_id: 1,
-          is_open: true
+          status: "open"
         },
         {
           id: 2,
@@ -22,7 +22,7 @@ exports.seed = function(knex) {
           category: 'tech support',
           student_id: 1,
           helper_id: 2,
-          is_open: true
+          status: "closed"
         }
       ]);
     });
