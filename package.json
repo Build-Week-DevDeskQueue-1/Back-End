@@ -4,7 +4,8 @@
   "description": "backend for dev desk queue build week",
   "main": "index.js",
   "scripts": {
-    "test": "maybe later"
+    "test": "maybe later",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
