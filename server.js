@@ -20,7 +20,12 @@ server.use(
   })
 );
 
+const reqLogger = (req, res, next) => {
+  console.log(req.body)
+  next()
+}
 
+server.use(reqLogger)
 server.use(express.json())
 server.use('/auth', authRoutes)
 server.use('/tickets', ticketRoutes)
