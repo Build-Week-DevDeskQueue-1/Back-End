@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3003;
 const db = require('./data/dbconfig')
 const authRoutes = require('./routes/authRoutes')
 const ticketRoutes = require('./routes/ticketRoutes')
-
+const slackRoutes = require('./slackbot/slackbotRoutes')
 const session = require('express-session');
 
 server.use(
@@ -29,6 +29,7 @@ server.use('/*', (req, res, next) => {
 
 server.use('/auth', authRoutes)
 server.use('/tickets', ticketRoutes)
+server.use('/slack', slackRoutes)
 
 server.get('/test', (req, res) => {
   res.status(200).send("hello")
