@@ -16,8 +16,8 @@ router.post('/newticket', async (req, res) => {
   const ticket = {
     title: ticketArray[0],
     description: ticketArray[1],
-    tried: ticketArray[2],
-    category: ticketArray[3]
+    category: ticketArray[2],
+    tried: ticketArray[3]
   }
   console.log(ticket)
   const id = await db.slackUser(req.body.user_name)
