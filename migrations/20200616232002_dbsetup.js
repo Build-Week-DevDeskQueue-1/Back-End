@@ -14,7 +14,7 @@ exports.up = function(knex) {
     table.text('description').notNullable();
     table.text('tried').notNullable();
     table.text('category').notNullable();
-    table.integer('student_id').notNullable().references('users.id');
+    table.integer('student_id').references('users.id');
     table.integer('helper_id').references('users.id')
     table.text('status').notNullable().defaultTo("open")
   })

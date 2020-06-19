@@ -22,10 +22,10 @@ server.use(
 
 server.use(express.json())
 
-server.use('/*', (req, res, next) => {
+/* server.use('/*', (req, res, next) => {
   console.log(req.body)
   next()
-})
+}) */
 
 server.use('/auth', authRoutes)
 server.use('/tickets', ticketRoutes)
