@@ -2,6 +2,8 @@ const router = require('express').Router();
 const db = require('../data/dbaccess')
 const parser = require('body-parser')
 
+const formatter = require('./slackFormatters')
+
 router.use(parser.urlencoded({ extended: true }))
 
 router.post('/test', (req, res) => {
@@ -38,7 +40,7 @@ router.post('/tickets', (req, res) => {
     db.tickets()
     .then(response => {
       const tickets = response;
-      res.status(200).send(tickets)
+      res.status(200).send(formatter(tickets))
     })
   .catch(error => res.status(401).send("Something went wrong"))
   } else if (text.length === 0) {
@@ -51,14 +53,18 @@ router.post('/tickets', (req, res) => {
           openTickets.push(element)
         }
       })
-      res.status(200).send(openTickets)
+      
+      res.status(200).send(formatter(openTickets))
     })
-  .catch(error => res.status(401).send("Something went wrong"))
+  .catch(error => {
+    console.log(error)
+    res.status(401).send("Something went wrong")
+  })
   } else {
     db.tickets(parseInt(text))
     .then(response => {
       const tickets = response;
-      res.status(200).send(tickets)
+      res.status(200).send(formatter(tickets))
     })
   .catch(error => res.status(401).send("Something went wrong, probably invalid ticket id"))
   }
