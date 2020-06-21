@@ -23,6 +23,7 @@
     "express-session": "^1.17.1",
     "jest": "^26.0.1",
     "knex": "^0.21.1",
+    "newrelic": "^6.9.0",
     "sqlite3": "^4.2.0",
     "supertest": "^4.0.2"
   }
