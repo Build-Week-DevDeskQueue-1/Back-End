@@ -25,7 +25,7 @@ server.use(
 
 server.use(express.json())
 
-server.use(cors({origin: "http://localhost:3000", credentials: true}))
+server.use(cors({origin: ["http://localhost:3000", "https://devdesk-7ved8h3v2.vercel.app/"], credentials: true}))
 
 /* server.use('/*', (req, res, next) => {
   console.log(req.body)
