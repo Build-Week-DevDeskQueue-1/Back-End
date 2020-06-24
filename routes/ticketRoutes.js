@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const db = require('../data/dbaccess')
 
-const protected = (req, res, next) => {
+const mustBeLoggedIn = (req, res, next) => {
   if (req.session.user) {
     next()
   } else {
@@ -9,7 +9,7 @@ const protected = (req, res, next) => {
   }
 };
 
-router.use('/', protected)
+router.use('/', mustBeLoggedIn)
 
 router.get('/', (req, res) => {
   db.tickets(req.body.id || null)

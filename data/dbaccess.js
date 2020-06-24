@@ -13,23 +13,6 @@ const user = user => {
   return db('users').where({ username: user.username }).first()
 }
 
-/* const slackUser = user_name => {
-  user({ username: user_name, is_student: true })
-  .then(response => {
-    console.log("response: ",response)
-    if (!response) {
-      register({ username: user_name, password: user_name })
-      .then(id => {
-        console.log("New user id: ", id)
-        return id;
-      })
-    } else {
-      console.log("Existing user id: ", response.id)
-      return response.id 
-    }
-  })
-} */
-
 const slackUser = async user_name => {
   const response1 = await user({ username: user_name })
   console.log("response: ", response1)

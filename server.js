@@ -1,10 +1,8 @@
-require('newrelic');
-
+require('newrelic')
 const express = require('express');
 const server = express();
 const PORT = process.env.PORT || 3003;
 
-const db = require('./data/dbconfig')
 const authRoutes = require('./routes/authRoutes')
 const ticketRoutes = require('./routes/ticketRoutes')
 const slackRoutes = require('./slackbot/slackbotRoutes')
@@ -56,3 +54,4 @@ server.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
 });
 
+module.exports = server

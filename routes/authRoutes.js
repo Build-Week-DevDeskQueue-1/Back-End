@@ -2,7 +2,15 @@ const router = require('express').Router();
 const db = require('../data/dbaccess')
 const bcrypt = require('bcryptjs');
 
-router.post('/register', (req, res) => {
+const requireUsernameAndPassword = (req, res, next) => {
+  if (!("username" in req.body) || !("password" in req.body)) {
+    res.status(400).send("Missing username or password")
+  } else {
+    next()
+  }
+}
+
+router.post('/register', requireUsernameAndPassword, (req, res) => {
   const user = req.body
   bcrypt.hash(user.password, 10, (err, hash) => {
     db.register({ ...user, password:hash})
@@ -11,7 +19,7 @@ router.post('/register', (req, res) => {
   })
 })
 
-router.post('/login', (req, res) => {
+router.post('/login', requireUsernameAndPassword, (req, res) => {
   const user = req.body
   db.user(user)
   .then(response => {
