@@ -23,7 +23,7 @@ server.use(
 
 server.use(express.json())
 
-server.use(cors({origin: /devdesk/, credentials: true}))
+server.use(cors({origin: [/devdesk/, "https://devdesk-eta.vercel.app/"], credentials: true}))
 
 /* server.use('/*', (req, res, next) => {
   console.log(req.body)
